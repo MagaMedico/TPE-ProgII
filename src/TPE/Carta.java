@@ -54,4 +54,8 @@ public class Carta {
 		}
 		return false;
 	}
+	
+	public String toString() {
+		return this.getNombre();
+	}
 }

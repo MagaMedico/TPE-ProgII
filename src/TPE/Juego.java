@@ -9,6 +9,10 @@ public class Juego {
 	private Mazo mazo;
 	private ArrayList<String> bitacora;
 	private Jugador perdedor;
+	private Atributo atributoJ1;
+	private Atributo atributoJ2;
+	private Carta cartaJ1;
+	private Carta cartaJ2;
 	
 	public Juego(int maxRonda, Jugador j1, Jugador j2, Mazo mazo) {
 		this.maxRonda=maxRonda;
@@ -75,13 +79,15 @@ public class Juego {
 	
 	private Jugador jugarMano(Jugador jugadorMano, Jugador jugadorNoMano) {
 		String nombre = jugadorMano.tomarNombreAtributo();
-		this.bitacora.add(nombre);
-		if(jugadorMano.tomarCarta().getAtributo(nombre).getValor()>jugadorNoMano.tomarCarta().getAtributo(nombre).getValor()){
-			this.bitacora.add(" valor " + jugadorMano.tomarCarta().getAtributo(nombre).getValor());
-			this.bitacora.add(" valor " + jugadorNoMano.tomarCarta().getAtributo(nombre).getValor());
+		this.bitacora.add(nombre + System.lineSeparator());
+		cartaJ1 = jugadorMano.tomarCarta();
+		cartaJ2 = jugadorNoMano.tomarCarta();
+		atributoJ1 = cartaJ1.getAtributo(nombre);
+		atributoJ2 = cartaJ2.getAtributo(nombre);
+		if(atributoJ1.getValor()>atributoJ2.getValor()){
 			perdedor = jugadorNoMano;
 			return compararCarta(jugadorMano,jugadorNoMano);
-		}else if(jugadorMano.tomarCarta().getAtributo(nombre).getValor()==jugadorNoMano.tomarCarta().getAtributo(nombre).getValor()){
+		}else if(atributoJ1.getValor()==atributoJ2.getValor()){
 			jugadorNoMano.getMazo().addCarta(jugadorNoMano.tomarCarta());
 			jugadorNoMano.getMazo().removePrimerCarta();
 			jugadorMano.getMazo().addCarta(jugadorMano.tomarCarta());
@@ -89,8 +95,6 @@ public class Juego {
 			perdedor = jugadorNoMano;
 			return jugadorMano;
 		}else{
-			this.bitacora.add(" valor " + jugadorMano.tomarCarta().getAtributo(nombre).getValor());
-			this.bitacora.add(" valor " + jugadorNoMano.tomarCarta().getAtributo(nombre).getValor());
 			perdedor = jugadorMano;
 			return compararCarta(jugadorNoMano,jugadorMano);
 		}
@@ -103,12 +107,12 @@ public class Juego {
 		repartirCartas();
 		while(contador<=this.maxRonda && jugadorMano.getMazo().getCarta().size()!=0 && jugadorNoMano.getMazo().getCarta().size()!= 0){
 			this.bitacora.add("-------Ronda " + contador + "---------" + System.lineSeparator());
-			this.bitacora.add("El jugador " + jugadorMano.getNombre() + " selecciona competir por el atributo " + System.lineSeparator());
+			this.bitacora.add("El jugador " + jugadorMano.getNombre() + " selecciona competir por el atributo ");
 			jugadorMano = jugarMano(jugadorMano, jugadorNoMano);
 			jugadorNoMano = perdedor;
 			contador++;
-			this.bitacora.add("La carta de " + jugadorMano.getNombre() + " es " + System.lineSeparator());
-			this.bitacora.add("La carta de " + jugadorNoMano.getNombre() + " es " + System.lineSeparator());
+			this.bitacora.add("La carta de " + jugadorMano.getNombre() + " es " + cartaJ1 + " con "+ atributoJ1.getNombre() + " " + atributoJ1.getValor() + System.lineSeparator());
+			this.bitacora.add("La carta de " + jugadorNoMano.getNombre() + " es "+ cartaJ2 + " con " + atributoJ2.getNombre() + " " + atributoJ2.getValor() + System.lineSeparator());
 			this.bitacora.add("Gana la ronda " + jugadorMano.getNombre() + System.lineSeparator());
 			this.bitacora.add(jugadorMano.getNombre() + " posee ahora " + jugadorMano.getMazo().getCarta().size() + " y " + jugadorNoMano.getNombre() + " posee ahora " + jugadorNoMano.getMazo().getCarta().size() + " cartas" + System.lineSeparator());
 		}
