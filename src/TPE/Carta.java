@@ -44,9 +44,9 @@ public class Carta {
 		if(c.cantAtributos()==this.cantAtributos()){
 			for(int i=0; i<atributos.size(); i++){
 				String nombre = this.atributos.get(i).getNombre();
-				for(int j=0; j<c.atributos.size();j++){
+				for(int j=0; j<c.getAtributo().size();j++){
 					String nombreC = this.atributos.get(i).getNombre();
-					if(nombreC.equals(nombre)){//esta mal la comparacion
+					if(nombreC.equals(nombre)){
 						return true;
 					}
 				}
