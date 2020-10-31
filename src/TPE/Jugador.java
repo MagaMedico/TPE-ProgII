@@ -1,6 +1,6 @@
 package TPE;
 
-public class Jugador {
+public abstract class Jugador {
 	
 	private String nombre;
 	private Mazo mazo;
@@ -34,14 +34,17 @@ public class Jugador {
 		return aux;
 	}
 	
-	public String tomarNombreAtributo() {
+	
+	public abstract String tomarNombreAtributo();
+	
+	/*public String tomarNombreAtributo() {
 		String aux = null;
 		for(int j=0; j<tomarCarta().getAtributo().size();j++){
 			int numero = (int) (Math.random() * tomarCarta().cantAtributos());
 			aux = tomarCarta().getAtributo().get(numero).getNombre(); 
 		}
 		return aux;
-	}
+	}*/
 	
 	
 	/*metodo tomarCarta(Mazo mazo o arraylist?){primero agarra la primer carta y toma un atributo random}
