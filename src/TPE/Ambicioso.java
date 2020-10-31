@@ -1,19 +1,18 @@
 package TPE;
 
+import java.util.ArrayList;
 import java.util.Collections;
 
-public class Ambicioso extends Jugador  {
+public class Ambicioso implements Estrategia  {
 	
-	public Ambicioso(String nombre) {
-		super(nombre);
-		
-	}
-
 	@Override
-	public String tomarNombreAtributo() {
+	public String tomarNombreAtributo(Carta c) {
 		String aux = null;
-		Collections.sort(this.tomarCarta().getAtributo(),new ComparadorValor());
-		aux = this.tomarCarta().getAtributo().get(0).getNombre();
+		ArrayList<Atributo> auxList = new ArrayList<>();
+		auxList = c.getAtributo();
+		Collections.sort(auxList,new ComparadorValor());
+		aux = auxList.get(4).getNombre();
+		System.out.println(auxList);
 		return aux;
 	}
 

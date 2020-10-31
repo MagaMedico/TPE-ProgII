@@ -76,9 +76,12 @@ public class VisorMazo {
 
     public static void main(String[] args) {
         String mazoPath = "./src/TPE/superheroes.json";
+        Estrategia Ambicioso = new Ambicioso();
+        Estrategia Obstinado = new Obstinado();
         
-        Jugador j1 = new Jugador("Benito");
-        Jugador j2 = new Jugador("Jose");
+        
+        Jugador j1 = new Jugador("Benito",Ambicioso);
+        Jugador j2 = new Jugador("Jose", Obstinado);
         Mazo mazo = new Mazo();
         mazo = cargarMazo(mazoPath);
         VisorMazo.mostrarMazo(mazoPath);

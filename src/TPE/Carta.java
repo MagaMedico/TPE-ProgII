@@ -3,15 +3,11 @@ package TPE;
 import java.util.ArrayList;
 
 public class Carta {
-	private String nombre;
 	private ArrayList<Atributo> atributos;
+	private Pocima pocima;
 	
-	public Carta(){
-		
-	}
 	
-	public Carta(String nombre) {
-		this.nombre = nombre;
+	public Carta() {
 		atributos = new ArrayList<Atributo>();
 	}
 	
@@ -27,10 +23,15 @@ public class Carta {
 		return atributos.size();
 	}
 
-	public String getNombre() {
-		return nombre;
-	}
 	
+	public Pocima getPocima() {
+		return pocima;
+	}
+
+	public void setPocima(Pocima pocima) {
+		this.pocima = pocima;
+	}
+
 	public Atributo getAtributo(String nombre){
 		for(int i=0; i<atributos.size(); i++){
 			if(atributos.get(i).getNombre().equals(nombre)){
@@ -39,6 +40,7 @@ public class Carta {
 		}
 		return null;
 	}
+	
 	
 	public boolean compararAtributos(Carta c){
 		if(c.cantAtributos()==this.cantAtributos()){
@@ -55,7 +57,8 @@ public class Carta {
 		return false;
 	}
 	
-	public String toString() {
-		return this.getNombre();
+	public void aplicarPocima(String s) {
+		Atributo a = this.getAtributo(s);
+		this.pocima.usar(a);
 	}
 }

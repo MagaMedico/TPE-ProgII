@@ -1,13 +1,19 @@
 package TPE;
 
-public abstract class Jugador {
+public class Jugador {
 	
 	private String nombre;
 	private Mazo mazo;
+	private Estrategia estrategia;
 	
-	public Jugador(String nombre) {
+	public Jugador(String nombre, Estrategia estrategia) {
 		this.nombre = nombre;
 		mazo = new Mazo();
+		this.estrategia =  estrategia;
+	}
+
+	public Estrategia getEstrategia() {
+		return estrategia;
 	}
 
 	public String getNombre() {
@@ -34,8 +40,9 @@ public abstract class Jugador {
 		return aux;
 	}
 	
-	
-	public abstract String tomarNombreAtributo();
+	public String tomarNombreAtributo(Carta c) {
+		return this.estrategia.tomarNombreAtributo(c);
+	}
 	
 	/*public String tomarNombreAtributo() {
 		String aux = null;

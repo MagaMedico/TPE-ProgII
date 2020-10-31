@@ -1,16 +1,11 @@
 package TPE;
 
-public class Obstinado extends Jugador {
-
-	public Obstinado(String nombre) {
-		super(nombre);
-		
-	}
+public class Obstinado implements Estrategia {
 
 	@Override
-	public String tomarNombreAtributo() {
+	public String tomarNombreAtributo(Carta c) {
 		
-		return this.tomarCarta().getAtributo().get(4).getNombre();
+		return c.getAtributo().get(4).getNombre(); //CONSULTAR SI SE PASA POR PARAMETRO??
 		
 	}
 

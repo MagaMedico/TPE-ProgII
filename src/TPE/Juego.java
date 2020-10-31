@@ -76,7 +76,8 @@ public class Juego {
 	}
 	
 	private Jugador jugarMano(Jugador jugadorMano, Jugador jugadorNoMano) {
-		nombre = jugadorMano.tomarNombreAtributo();
+		Carta carta = jugadorMano.tomarCarta();
+		nombre = jugadorMano.tomarNombreAtributo(carta);
 		this.bitacora.add(nombre + System.lineSeparator());
 		if(jugadorMano.tomarCarta().getAtributo(nombre).getValor()>jugadorNoMano.tomarCarta().getAtributo(nombre).getValor()){
 			cartaG = jugadorMano.tomarCarta();
