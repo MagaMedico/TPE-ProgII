@@ -75,16 +75,24 @@ public class Juego {
 		return ganador;
 	}
 	
+	private int usarPocima(Carta c){
+		int valor = 0;
+		if(c.getPocima()!=null){
+			valor = (int)c.aplicarPocima(nombre);
+			return valor;
+		} else return c.getAtributo(nombre).getValor();
+	}
+	
 	private Jugador jugarMano(Jugador jugadorMano, Jugador jugadorNoMano) {
 		Carta carta = jugadorMano.tomarCarta();
 		nombre = jugadorMano.tomarNombreAtributo(carta);
 		this.bitacora.add(nombre + System.lineSeparator());
-		if(jugadorMano.tomarCarta().getAtributo(nombre).getValor()>jugadorNoMano.tomarCarta().getAtributo(nombre).getValor()){
+		if(usarPocima(jugadorMano.tomarCarta())>usarPocima(jugadorNoMano.tomarCarta())){
 			cartaG = jugadorMano.tomarCarta();
 			cartaP = jugadorNoMano.tomarCarta();
 			perdedor = jugadorNoMano;
 			return compararCarta(jugadorMano,jugadorNoMano);
-		}else if(jugadorMano.tomarCarta().getAtributo(nombre).getValor()==jugadorNoMano.tomarCarta().getAtributo(nombre).getValor()){
+		}else if(usarPocima(jugadorMano.tomarCarta())==usarPocima(jugadorNoMano.tomarCarta())){
 			jugadorNoMano.getMazo().addCarta(jugadorNoMano.tomarCarta());
 			jugadorNoMano.getMazo().removePrimerCarta();
 			jugadorMano.getMazo().addCarta(jugadorMano.tomarCarta());
@@ -113,7 +121,13 @@ public class Juego {
 			jugadorNoMano = perdedor;
 			contador++;
 			this.bitacora.add("La carta de " + jugadorMano.getNombre() + " es " + cartaG + " con "+ nombre + " " + cartaG.getAtributo(nombre).getValor() + System.lineSeparator());
+			if(cartaG.getPocima()!=null){
+				this.bitacora.add(cartaG.imprimirPocima(usarPocima(cartaG)) + System.lineSeparator());
+			}
 			this.bitacora.add("La carta de " + jugadorNoMano.getNombre() + " es "+ cartaP + " con " + nombre + " " + cartaP.getAtributo(nombre).getValor() + System.lineSeparator());
+			if(cartaP.getPocima()!=null){
+				this.bitacora.add(cartaP.imprimirPocima(usarPocima(cartaP)) + System.lineSeparator());
+			}
 			this.bitacora.add("Gana la ronda " + jugadorMano.getNombre() + System.lineSeparator());
 			this.bitacora.add(jugadorMano.getNombre() + " posee ahora " + jugadorMano.getMazo().getCarta().size() + " y " + jugadorNoMano.getNombre() + " posee ahora " + jugadorNoMano.getMazo().getCarta().size() + " cartas" + System.lineSeparator());
 		}

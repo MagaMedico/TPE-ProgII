@@ -12,7 +12,6 @@ public class Ambicioso implements Estrategia  {
 		auxList = c.getAtributo();
 		Collections.sort(auxList,new ComparadorValor());
 		aux = auxList.get(4).getNombre();
-		System.out.println(auxList);
 		return aux;
 	}
 

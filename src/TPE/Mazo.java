@@ -52,19 +52,17 @@ public class Mazo {
 	public void mezclarMazo() {
 		Collections.shuffle(cartas);
 		repartirPocimas();
+		Collections.shuffle(cartas);
 	}
 	
 	public void repartirPocimas() {
+		ArrayList<Pocima> aux = new ArrayList<>(this.pocimas);
 		for(int i =0; i<this.cartas.size();i++) {
 			Carta c = this.cartas.get(i);
-			for(int j = 0; j < this.pocimas.size();j++) {
-				c.setPocima(pocimas.get(j));
+			for(int j = 0; j < aux.size();j++) {
+				c.setPocima(aux.get(j));
+				aux.remove(aux.get(j));
 			}
 		}
 	}
-	
-	/*metodo crearMazo()
-	 * metodo verificarCartas(){recorrer el arraylist de cartas y compararlas para ver que son iguales}
-	 * 							mismo nombre de atributos y cantidad.
-	 */
 }

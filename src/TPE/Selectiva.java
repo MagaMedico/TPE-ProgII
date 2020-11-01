@@ -1,23 +1,22 @@
 package TPE;
 
 public class Selectiva extends Pocima {
-
-	private String nombre;
+	private String nombreAt;
 	private double valor;
 	
-	public Selectiva(String nombre, double valor) {
-		this.nombre = nombre;
+	public Selectiva(String nombre, String nombreAt, double valor) {
+		super(nombre);
+		this.nombreAt = nombreAt;
 		this.valor = valor;
 	}
+	
 	@Override
 	public double usar(Atributo a) {
-		if(a.getNombre().equals(nombre)) {
-			return a.getValor() * valor;//TENDRIAMOS QUE RETORNAR EL VALOR 
-			
-		}else {
-			return a.getValor();
-		}
-		
+		double valor = 0.0;
+		if(a.getNombre().equals(nombreAt)) {
+			valor = a.getValor() * this.valor;
+			a.setValor((int)valor);
+			return valor;
+		}else return a.getValor();
 	}
-
 }
