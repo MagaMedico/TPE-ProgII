@@ -1,4 +1,6 @@
-package TPE;
+package juegoPrincipal;
+
+import estrategias.Estrategia;
 
 public class Jugador {
 	

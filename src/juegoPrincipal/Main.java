@@ -1,18 +1,27 @@
-package TPE;
+package juegoPrincipal;
+
+import estrategias.Ambicioso;
+import estrategias.Estrategia;
+import estrategias.Obstinado;
+import estrategias.Timbero;
+import pocima.Cocktail;
+import pocima.Multiplicadora;
+import pocima.Selectiva;
+import pocima.ValorFijo;
 
 public class Main extends VisorMazo{
 	public static void main(String[] args) {
-        String mazoPath = "./src/TPE/superheroes.json";
+        String mazoPath = "./src/juegoPrincipal/superheroes.json";
         Estrategia ambicioso = new Ambicioso();
-        Estrategia obstinado = new Obstinado();
+        Estrategia obstinado = new Obstinado("fuerza");
         Estrategia timbero = new Timbero();
         
         Multiplicadora p1 = new Multiplicadora("Fortelecedora", 1.2);
         Multiplicadora p2 = new Multiplicadora("Fortelecedora Plus", 1.5);
         Multiplicadora p3 = new Multiplicadora("Kriptonita", 0.75);
         Multiplicadora p4 = new Multiplicadora("Reductor de Plomo", 0.45);
-        RetornaAlgo p5 = new RetornaAlgo("Quiero vale Cuatro", 4);
-        RetornaAlgo p6 = new RetornaAlgo("Numero magico", 23);
+        ValorFijo p5 = new ValorFijo("Quiero vale Cuatro", 4);
+        ValorFijo p6 = new ValorFijo("Numero magico", 23);
         Selectiva p7 = new Selectiva("Selectiva Fuerza", "fuerza", 1.35);
         Selectiva p8 = new Selectiva("Selectiva Peso", "peso", 1.43);
         Cocktail p9 = new Cocktail("Cocktail");

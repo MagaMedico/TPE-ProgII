@@ -1,4 +1,6 @@
-package TPE;
+package pocima;
+
+import juegoPrincipal.Atributo;
 
 public class Multiplicadora extends Pocima {
 	private double valor;

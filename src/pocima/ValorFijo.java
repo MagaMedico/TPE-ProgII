@@ -1,10 +1,12 @@
-package TPE;
+package pocima;
 
-public class RetornaAlgo extends Pocima {
+import juegoPrincipal.Atributo;
+
+public class ValorFijo extends Pocima {
 
 	private int valor;
 	
-	public RetornaAlgo(String nombre,int valor) {
+	public ValorFijo(String nombre,int valor) {
 		super(nombre);
 		this.valor = valor;
 	}

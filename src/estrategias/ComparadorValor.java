@@ -1,6 +1,8 @@
-package TPE;
+package estrategias;
 
 import java.util.Comparator;
+
+import juegoPrincipal.Atributo;
 
 public class ComparadorValor implements Comparator<Atributo>{
 	@Override

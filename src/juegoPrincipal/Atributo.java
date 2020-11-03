@@ -1,4 +1,4 @@
-package TPE;
+package juegoPrincipal;
 
 public class Atributo {
 	

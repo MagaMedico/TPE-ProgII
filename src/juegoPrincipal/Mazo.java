@@ -1,7 +1,9 @@
-package TPE;
+package juegoPrincipal;
 
 import java.util.ArrayList;
 import java.util.Collections;
+
+import pocima.Pocima;
 
 public class Mazo {
 	

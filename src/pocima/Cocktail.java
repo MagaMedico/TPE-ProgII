@@ -1,8 +1,11 @@
-package TPE;
+package pocima;
 
 import java.util.ArrayList;
 
+import juegoPrincipal.Atributo;
+
 public class Cocktail extends Pocima {
+	
 	private ArrayList<Pocima> pocimas;
 	
 	public Cocktail(String nombre) {

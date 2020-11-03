@@ -1,7 +1,10 @@
-package TPE;
+package estrategias;
 
 import java.util.ArrayList;
 import java.util.Collections;
+
+import juegoPrincipal.Atributo;
+import juegoPrincipal.Carta;
 
 public class Ambicioso implements Estrategia  {
 	

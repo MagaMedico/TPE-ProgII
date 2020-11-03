@@ -1,4 +1,6 @@
-package TPE;
+package pocima;
+
+import juegoPrincipal.Atributo;
 
 public class Selectiva extends Pocima {
 	private String nombreAt;

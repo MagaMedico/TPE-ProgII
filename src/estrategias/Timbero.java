@@ -1,4 +1,6 @@
-package TPE;
+package estrategias;
+
+import juegoPrincipal.Carta;
 
 public class Timbero implements Estrategia {
 

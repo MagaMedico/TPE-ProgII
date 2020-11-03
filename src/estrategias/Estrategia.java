@@ -1,5 +1,6 @@
-package TPE;
+package estrategias;
 
+import juegoPrincipal.Carta;
 
 public interface Estrategia {
 	

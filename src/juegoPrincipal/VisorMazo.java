@@ -1,4 +1,4 @@
-package TPE;
+package juegoPrincipal;
 
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -75,7 +75,7 @@ public class VisorMazo {
     }
 
     public static void main(String[] args) {
-        String mazoPath = "./src/TPE/superheroes.json";
+        String mazoPath = "./src/juegoPrincipal/superheroes.json";
         VisorMazo.mostrarMazo(mazoPath);
     }
 

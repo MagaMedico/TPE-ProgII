@@ -1,4 +1,6 @@
-package TPE;
+package pocima;
+
+import juegoPrincipal.Atributo;
 
 public abstract class Pocima {	
 	private String nombre;

@@ -1,6 +1,9 @@
-package TPE;
+package juegoPrincipal;
+
 
 import java.util.ArrayList;
+
+import pocima.Pocima;
 
 public class Carta {
 	private String nombre;
@@ -56,11 +59,11 @@ public class Carta {
 	
 	
 	public boolean compararAtributos(Carta c){
-		if(c.cantAtributos()==this.cantAtributos()){
+		if(c.cantAtributos()== this.cantAtributos()){
 			for(int i=0; i<atributos.size(); i++){
 				String nombre = this.atributos.get(i).getNombre();
 				for(int j=0; j<c.getAtributo().size();j++){
-					String nombreC = this.atributos.get(i).getNombre();
+					String nombreC = c.getAtributo().get(j).getNombre();
 					if(nombreC.equals(nombre)){
 						return true;
 					}
@@ -76,8 +79,19 @@ public class Carta {
 		return this.pocima.usar(nuevo);
 	}
 	
-	public String imprimirPocima(int valor){
-		return "Se aplico pocima " + pocima.getNombre() + " valor resultante " + valor;
+	public String imprimirPocima(String nombre){
+		if(this.getPocima()!= null) {
+			return "Se aplico pocima " + pocima.getNombre() + " valor resultante " + this.obtenerValor(nombre);
+		}else
+			return " ";
+	}
+	
+	public int obtenerValor(String nombre){
+		int valor = 0;
+		if(this.getPocima()!=null){
+			valor = (int)this.aplicarPocima(nombre);
+			return valor;
+		} else return this.getAtributo(nombre).getValor();
 	}
 	
 	public String toString(){
